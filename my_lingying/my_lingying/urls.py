@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from users import views
+from articles import views_article
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^feed/',views.index)
+    url(r'^feed/',views.index,name='feed'),
+    url(r'^messaging/',views.messaging,name='messaging'),
+    url(r'^article/',views_article.article,name='article'),
 ]

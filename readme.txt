@@ -1,1 +1,3 @@
 需要一个数据库里面有两个表：users;words
+
+用bootstrap编写页面样式
