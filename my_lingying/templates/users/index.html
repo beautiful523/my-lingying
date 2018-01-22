@@ -10,9 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
 		<!-- 我的样式文件 -->
 		<link rel="stylesheet" type="text/css" href="{% static 'css/my_page.css' %}">	
+		<script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
 	</head>
 
-	<body class="messaging_body">
+	<body>
 		<!--header开始-->
 		<div class="header">
 			<div class="header_center">
@@ -34,13 +35,13 @@
 				<div class="main_to_me">
 					<ul class="main_to_me_ul">
 						<li class="to_main_page">
-							<a href="{% url 'feed' %}" class="main_to_me_a"></a>
+							<a href="#" class="main_to_me_a"></a>
 						</li><li class="to_friends">
 							<a href="#" class="main_to_me_a"></a>
 						</li><li class="to_position">
 							<a href="#" class="main_to_me_a"></a>
 						</li><li class="to_position">
-							<a href="#" class="main_to_me_a"></a>
+							<a href="{% url 'users:messaging' %}" class="main_to_me_a"></a>
 						</li><li class="to_notice">
 							<a href="#" class="main_to_me_a"></a>
 						</li><li class="to_me">
@@ -119,46 +120,41 @@
 		<div class="main">
 			<div class="main_content">
 				<div class="upper_rail"></div>
-
-
-				<div class="messaging_rail">
-					<div class="messaging_rail_left">
-						<div class="write_new">
-							<div class="write_new_words">消息</div>
-							<div class="write_new_picture"></div>
-						</div>
-						<input type="text" class="search_message">
-						<div class="record">
-							
-							<div class="record_words">
-								<div class="friend_name">
-									<div class="friend_name_time">1月17日</div>
-									<h3 class="friend_name_name">涂迪</h3>
-									<div class="record_words_body">您：在吗？</div>
-								</div>
-							</div>
-							<div class="record_picture"></div>
-						</div>
+				<div class="left_rail">
+					<a href="#" class="camera_a"></a>
+					<a href="#" class="welcome_a">周雅文，欢迎使用领英！</a>
+					<div class="upload">
+						<span class="upload_span">上传照片</span>
 					</div>
-					<div class="messaging_rail_right">
-						<div class="friend_info">
-							<div class="friend_info_three"></div>
-							<div class="friend_info_name">涂迪</div>
-							<div class="friend_info_job">软件工程师-北京</div>
-						</div>
-						<ul class="we_chat">
-							<li class="we_chat_li"></li>
-							<li class="we_chat_li"></li>
-							<li class="we_chat_li"></li>
-						</ul>
-						<form class="we_send">
-							<textarea class="we_send_text" placeholder="写消息或添加文件"></textarea>
-						</form>
-						<div class="we_send_last">
-							<div class="we_send_last_small"></div>
-						</div>
+					<div class="number">
+						<div class="number_number">1</div>
+						<div class="number_friends">好友</div>
+						<div class="number_more_friends">扩展人脉</div>
 					</div>
+					<div class="tool">
+						<p class="acquire_tool">获取独家工具与洞察</p>
+						<div class="try_tool">试用高级帐号</div>
+					</div>
+				</div>
 
+
+				<div class="core_rail">
+					<form class="send_words">
+						{% csrf_token %}
+						<input type='text' class="send_words_words" placeholder="发文章，照片或动态">
+						<!-- <span class="send_words_words_a">发文章，照片或动态</span> -->
+						</input>
+						<div class="send_button">
+							<div class="fa_zhaop"></div>
+							<!-- <div class="fa_bu"></div> -->
+							<!-- <input type="buttom" class="fa_bu"> -->
+							<!-- <input type="buttom" value="" class="fa_bu"> -->
+							<div class="fa_bu"></div>
+						</div>
+					</form>
+					<div class="core_rail_hr">
+						<hr>
+					</div>
 				</div>
 
 
@@ -173,6 +169,56 @@
 			</div>
 		</div>
 		<!--main结束-->
+		<script type="text/javascript">
+				// 获取动态
+				$.ajax({
+					url: "{% url 'articles:article' %}",
+					success: function (res) {
+						if (res.code === 200) {
+							var data = res.data;
+							for(i = 0; i < data.length; i++) {
+								var head = '<div class="new_article">';
+								var tail = '</div>';
+								var temp = head + '<p>' + data[i].user_name + '</p>' + '<p>' + data[i].job + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>';
+								$('.core_rail').append(temp);
+								// if(i==5){
+								// 	break
+								// }
+							}
+						}
+					}
+				});
 
+				$('.fa_bu').click(function () {
+					var user_id = 2;
+					var content = $('input[class="send_words_words"]').val();
+
+					if(content==''){
+						alert('请编辑内容');
+						return
+					};
+					var data = {
+						"user_id": user_id,
+						"content": content,
+					};
+					$.ajax({
+						type: 'POST',
+						url: "{% url 'articles:article' %}",
+						data: JSON.stringify(data),
+						success: function (res) {
+							if (res.code == 200) {
+								alert('发布成功')
+								$('.send_words_words').val('')
+								window.location.reload();
+							}
+						},
+						error : function(data){
+	 						alert("进入了error方法");
+  					 	}
+					})
+					
+				})
+
+		</script>
 	</body>
 </html>

@@ -1,0 +1,290 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>LinkedIn</title>
+		<!-- 地址栏的图标 -->
+		<link rel="icon" href="{% static 'images/in.ico' %}" mce_href="{% static 'images/in.ico' %}" type="image/x-icon">
+		<!-- 引入重置样式表 -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+		<!-- 我的样式文件 -->
+		<link rel="stylesheet" type="text/css" href="{% static 'css/my_page.css' %}">
+        <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+	</head>
+
+	<body class="messaging_body">
+		<!--header开始-->
+		<div class="header">
+			<div class="header_center">
+				<!--图标-->
+				<div class="logo">
+					<a href="#">
+						<span class="logo_span"></span>
+					</a>
+				</div>
+
+				<!--搜索框-->
+				<form class="search">
+					<div class="search_bar">
+						<input type="text" class="search_input" name="search_input">
+					</div>
+				</form>
+
+				<!--导航：从“主页”到“我”-->
+				<div class="main_to_me">
+					<ul class="main_to_me_ul">
+						<li class="to_main_page">
+							<a href="{% url 'users:index' %}" class="main_to_me_a"></a>
+						</li><li class="to_friends">
+							<a href="#" class="main_to_me_a"></a>
+						</li><li class="to_position">
+							<a href="#" class="main_to_me_a"></a>
+						</li><li class="to_position">
+							<a href="#" class="main_to_me_a"></a>
+						</li><li class="to_notice">
+							<a href="#" class="main_to_me_a"></a>
+						</li><li class="to_me">
+							<a href="#" class="main_to_me_a"></a>
+						</li>
+					</ul>
+				</div>
+
+				<!--导航：“更多”到“升级”-->
+				<div class="more_to_up">
+					<ul >
+						<li class="to_more">
+							<a href="#" class="to_more_a"></a>
+						</li><li class="to_up">
+							<a href="#" class="to_up_a">升级帐号</a>
+						</li>	
+					</ul>
+				</div>
+				
+
+			</div>
+		</div>
+		<!--header结束-->
+		
+		<!--neck开始-->
+		<div class="neck">
+			<div class="neck_content">
+				<div class="narrow_up"></div>
+				<h4 class="neck_h4">周雅文，简单三步，构建职场关系：</h4>
+
+				<div class="three_step_out">
+					<div class="three_step three_step_left">
+					<!-- 左 -->
+						<div class="people_picture">
+							<span class="people_picture_span"></span>
+						</div>
+						<div class="step1_h5">
+							<h5 class="step1_h5_h5">完善职业档案，秀出您的实力！</h5>
+						</div>
+						<div class="article">
+							<p class="article_p">工作经历填好啦！添加职业照，帮助其他人认出您。</p>
+						</div>
+					</div>
+					<div class="three_step three_step_center">
+					<!-- 中 -->
+						<div class="friends_picture">
+							<span class="friends_picture_span"></span>
+						</div>
+						<div class="step2_h5">
+							<h5 class="step2_h5_h5">拓展职场人脉</h5>
+						</div>
+						<div class="article_2">
+							<p class="article_2_p">您有 1 位好友！结识更多人脉，就会有更多职场机会。试试从添加 30 位好友开始。</p>
+						</div>
+					</div>
+					<div class="three_step three_step_right">
+					<!-- 右 -->
+						<div class="message_picture">
+							<span class="message_picture_span"></span>
+						</div>
+						<div class="step3_h5">
+							<h5 class="step3_h5_h5">获取行业资讯</h5>
+						</div>
+						<div class="article_3">
+							<p class="article_3_p">关注业界资讯，掌握职场最新资讯。</p>
+						</div>
+					</div>
+				</div>
+				
+
+			</div>
+		</div>
+		<!--neck结束-->
+		
+		<!--main开始-->
+		<div class="main">
+			<div class="main_content">
+				<div class="upper_rail"></div>
+
+
+				<div class="messaging_rail">
+					<div class="messaging_rail_left">
+						<div class="write_new">
+							<div class="write_new_words">消息</div>
+							<div class="write_new_picture"></div>
+						</div>
+						<input type="text" class="search_message">
+						<div class="record">
+							
+							<div class="record_words">
+								<div class="friend_name">
+									<div class="friend_name_time">1月17日</div>
+									<h3 class="friend_name_name">涂迪</h3>
+									<div class="record_words_body">您：在吗？</div>
+								</div>
+							</div>
+							<div class="record_picture"></div>
+						</div>
+					</div>
+					<div class="messaging_rail_right">
+						<div class="friend_info">
+							<div class="friend_info_three"></div>
+							<div class="friend_info_name">涂迪</div>
+							<div class="friend_info_job">软件工程师-北京</div>
+						</div>
+						<ul class="we_chat">
+{#							<li class="we_chat_li"></li>#}
+{#							<li class="we_chat_li"></li>#}
+{#							<li class="we_chat_li"></li>#}
+						</ul>
+						<form class="we_send">
+							<textarea class="we_send_text" placeholder="写消息或添加文件"></textarea>
+						</form>
+						<div class="we_send_last">
+							<div class="we_send_last_small"></div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+				<div class="right_rail">
+					<div class="find_career">
+						<div class="find_career_inner"></div>
+					</div>
+					<div class="right_rail_low"></div>
+				</div>
+			</div>
+		</div>
+		<!--main结束-->
+        <script type="text/javascript">
+            $('.messaging_rail_right').hide();
+            $.ajax({
+					url: "{% url 'chats:chat' %}",
+					success: function (res) {
+						if (res.code === 200) {
+							var data = res.data;
+                            $('.we_chat').empty();
+							for(i = 0; i < data.length; i++) {
+								var head = '<li class="we_chat_li">';
+								var tail = '</li>';
+								var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+								$('.we_chat').append(temp);
+								// if(i==5){
+								// 	break
+								// }
+							}
+						}
+					}
+				});
+
+
+{#            双击联系人，聊天框弹出，计时器开启#}
+            $('.record').dblclick(function () {
+                $('.messaging_rail_right').show();
+                my_interval = setInterval(getMsgHandler,3000);
+                function getMsgHandler() {
+                    // 每三秒查询消息数据库
+                    $.ajax({
+                        url: "{% url 'chats:chat' %}",
+                        success: function (res) {
+                            if (res.code === 200) {
+                                var data = res.data;
+                                var changdu;
+                                // 数据库有变化才更新页面
+                                if(data.length == changdu){
+                                    return
+                                }
+                                $('.we_chat').empty();
+                                for(i = 0; i < data.length; i++) {
+                                    var head = '<li class="we_chat_li">';
+                                    var tail = '</li>';
+                                    var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+                                    $('.we_chat').append(temp);
+                                    // if(i==5){
+                                    // 	break
+                                    // }
+                                }
+                                changdu = res.data.length
+                            }
+                        }
+                    });
+                }
+            });
+
+{#            单击聊天框右上，聊天框关闭，计时器关闭#}
+            $('.friend_info_three').click(function () {
+                $('.messaging_rail_right').hide();
+                clearInterval(my_interval)
+            });
+
+{#            输入文本，单击发送，发送消息#}
+            $('.we_send_last_small').click(function () {
+                var sender_id = 2;
+                var receiver_id = 1;
+                var content = $('textarea[class="we_send_text"]').val();
+                if(content==''){
+                    alert('请编辑内容');
+                    return
+                }
+                var data = {
+                    "sender_id": sender_id,
+                    "content": content,
+                    "receiver_id":receiver_id
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: "{% url 'chats:chat' %}",
+                    data: JSON.stringify(data),
+                    success: function (res) {
+                        if (res.code == 200) {
+                            alert('发送成功');
+                            $('.we_send_text').val('');
+                            // 发送成功就更新一次聊天框内容
+                            $.ajax({
+                                url: "{% url 'chats:chat' %}",
+                                success: function (res) {
+                                    if (res.code === 200) {
+                                        var data = res.data;
+                                        $('.we_chat').empty();
+                                        for(i = 0; i < data.length; i++) {
+                                            var head = '<li class="we_chat_li">';
+                                            var tail = '</li>';
+                                            var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+                                            $('.we_chat').append(temp);
+                                            // if(i==5){
+                                            // 	break
+                                            // }
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                    },
+                    error : function(data){
+                        alert("进入了error方法");
+                    }
+                })
+
+            })
+
+		</script>
+	</body>
+</html>

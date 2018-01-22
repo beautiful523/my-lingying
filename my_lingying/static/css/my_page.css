@@ -618,8 +618,10 @@ top:-20px;
 
 .we_chat{
 	width:475px;
+	height:223px;
 	padding:16px 8px 0;
 	border-bottom:#0091ca 2px solid ;
+	overflow:auto;
 }
 .we_chat_li{
 	width:475px;
