@@ -181,16 +181,23 @@
 					success: function (res) {
 						if (res.code === 200) {
 							var data = res.data;
+							$('.record_words_body').text(data[data.length-1].content);
                             $('.we_chat').empty();
 							for(i = 0; i < data.length; i++) {
 								var head = '<li class="we_chat_li">';
 								var tail = '</li>';
-								var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+								if(data[i].sender_id==2){
+                                        var temp = head +'<div style="overflow:hidden";>' + '<div class="chat_me_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_me_time">'+ data[i].create_time +'</div>'+tail;
+                }else{
+                                        var temp = head + '<div class="chat_other_big">'+'<div class="chat_other_picture"></div>'+'<div class="chat_other_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_other_time">'+ data[i].create_time +'</div>'+tail;
+                 }
+                 
 								$('.we_chat').append(temp);
 								// if(i==5){
 								// 	break
 								// }
 							}
+							$('.we_chat').scrollTop( $('.we_chat')[0].scrollHeight);
 						}
 					}
 				});
@@ -198,6 +205,7 @@
 
 {#            双击联系人，聊天框弹出，计时器开启#}
             $('.record').dblclick(function () {
+		var changdu;
                 $('.messaging_rail_right').show();
                 my_interval = setInterval(getMsgHandler,3000);
                 function getMsgHandler() {
@@ -206,22 +214,28 @@
                         url: "{% url 'chats:chat' %}",
                         success: function (res) {
                             if (res.code === 200) {
-                                var data = res.data;
-                                var changdu;
+                                var data = res.data;   
+                                                         
                                 // 数据库有变化才更新页面
                                 if(data.length == changdu){
                                     return
                                 }
+                                $('.record_words_body').text(data[data.length-1].content);
                                 $('.we_chat').empty();
                                 for(i = 0; i < data.length; i++) {
                                     var head = '<li class="we_chat_li">';
                                     var tail = '</li>';
-                                    var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+                                    								if(data[i].sender_id==2){
+                                        var temp = head +'<div style="overflow:hidden";>' + '<div class="chat_me_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_me_time">'+ data[i].create_time +'</div>'+tail;
+                }else{
+                                        var temp = head + '<div class="chat_other_big">'+'<div class="chat_other_picture"></div>'+'<div class="chat_other_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_other_time">'+ data[i].create_time +'</div>'+tail;
+                 }
                                     $('.we_chat').append(temp);
                                     // if(i==5){
                                     // 	break
                                     // }
                                 }
+				$('.we_chat').scrollTop( $('.we_chat')[0].scrollHeight);
                                 changdu = res.data.length
                             }
                         }
@@ -255,7 +269,6 @@
                     data: JSON.stringify(data),
                     success: function (res) {
                         if (res.code == 200) {
-                            alert('发送成功');
                             $('.we_send_text').val('');
                             // 发送成功就更新一次聊天框内容
                             $.ajax({
@@ -263,16 +276,22 @@
                                 success: function (res) {
                                     if (res.code === 200) {
                                         var data = res.data;
+                                        $('.record_words_body').text(data[data.length-1].content);
                                         $('.we_chat').empty();
                                         for(i = 0; i < data.length; i++) {
                                             var head = '<li class="we_chat_li">';
                                             var tail = '</li>';
-                                            var temp = head + '<p>' + data[i].sender_id + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>' + tail;
+                                            								if(data[i].sender_id==2){
+                                        var temp = head +'<div style="overflow:hidden";>' + '<div class="chat_me_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_me_time">'+ data[i].create_time +'</div>'+tail;
+                }else{
+                                        var temp = head + '<div class="chat_other_big">'+'<div class="chat_other_picture"></div>'+'<div class="chat_other_words">'+ data[i].content +'</div>'+'</div>'+'<div class="chat_other_time">'+ data[i].create_time +'</div>'+tail;
+                 }
                                             $('.we_chat').append(temp);
                                             // if(i==5){
                                             // 	break
                                             // }
                                         }
+					$('.we_chat').scrollTop( $('.we_chat')[0].scrollHeight);
                                     }
                                 }
                             });

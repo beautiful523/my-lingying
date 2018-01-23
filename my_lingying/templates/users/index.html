@@ -179,7 +179,7 @@
 							for(i = 0; i < data.length; i++) {
 								var head = '<div class="new_article">';
 								var tail = '</div>';
-								var temp = head + '<p>' + data[i].user_name + '</p>' + '<p>' + data[i].job + '</p>' + '<p>' + data[i].create_time + '</p>' + '<p>' + data[i].content + '</p>';
+								var temp = head + '<div class="article_part_up">'+'<div class="article_part_up_p"></div>'+'<div class="article_part_up_w">'+ '<p class="p_name">' + data[i].user_name + '</p>' + '<p class="p_job">' + data[i].job + '</p>' + '<p class="p_time">' + data[i].create_time + '</p>' + '</div>'+ '</div>' + '<p class="p_content">' + data[i].content + '</p>'+'<div class="p_content_picture"></div>';
 								$('.core_rail').append(temp);
 								// if(i==5){
 								// 	break
